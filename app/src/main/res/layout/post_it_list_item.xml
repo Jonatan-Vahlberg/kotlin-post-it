@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="note"
+            type="info.jonatan_vahlberg.postit.database.PostItNote" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/post_it_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="message"
+            app:formattedMessage="@{note}"
+            app:layout_constraintEnd_toStartOf="@id/note_close"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/post_it_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/post_it_message"
+            app:layout_constraintEnd_toEndOf="@+id/post_it_message"
+            app:layout_constraintTop_toBottomOf="@+id/post_it_message"
+            android:layout_marginTop="8dp"
+            android:text="Created 2020/02/27 14:00"
+            app:formattedTime="@{note}"/>
+
+        <ImageButton
+            android:id="@+id/note_close"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="5dp"
+            android:background="@color/colorClose"
+            android:src="@drawable/ic_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/post_it_message"
+            app:layout_constraintTop_toTopOf="@+id/post_it_message" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.05mm"
+        android:layout_marginHorizontal="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/colorDivider"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

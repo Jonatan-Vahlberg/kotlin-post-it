@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable
+            name="listViewModel"
+            type="info.jonatan_vahlberg.postit.list.ListViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".list.ListFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notes_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/post_it_input"
+            android:layout_marginVertical="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        <EditText
+            android:id="@+id/post_it_input"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notes_list"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/post_it_submit"
+            android:text="@={listViewModel.currentMessage}"
+            android:layout_marginBottom="8dp" android:hint="Enter new post it note here"/>
+        <Button
+            android:id="@+id/post_it_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="@+id/notes_list"
+            app:layout_constraintBottom_toBottomOf="@+id/post_it_input"
+            app:layout_constraintTop_toTopOf="@id/post_it_input"
+            android:text="Send"
+            android:onClick="@{() -> listViewModel.onSubmit()}"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
